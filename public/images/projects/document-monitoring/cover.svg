@@ -1,85 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
-  <defs>
-    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.035"/></pattern>
-    <radialGradient id="glow" cx="50%" cy="0%" r="75%"><stop offset="0" stop-color="#8cb0ff" stop-opacity="0.14"/><stop offset="1" stop-color="#8cb0ff" stop-opacity="0"/></radialGradient>
-  </defs>
-  <rect width="1600" height="1000" fill="#0e1117"/>
-  <rect width="1600" height="1000" fill="url(#g)"/>
-  <rect width="1600" height="1000" fill="url(#glow)"/>
-  <rect x="120" y="110" width="1360" height="800" rx="18" fill="#141922" stroke="#303848"/>
-  <path d="M120 128a18 18 0 0 1 18-18h1324a18 18 0 0 1 18 18v38H120z" fill="#1a202b"/>
-  <line x1="120" y1="166" x2="1480" y2="166" stroke="#252c38"/>
-  <circle cx="152" cy="138" r="6" fill="#303848"/><circle cx="174" cy="138" r="6" fill="#303848"/><circle cx="196" cy="138" r="6" fill="#303848"/>
-  <rect x="640" y="124" width="320" height="28" rx="8" fill="#0e1117" stroke="#252c38"/>
-  <text x="800" y="143" text-anchor="middle" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="13" fill="#6b7485">document-monitoring</text>
-  <text x="1456" y="143" text-anchor="end" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="12" fill="#6b7485">PLACEHOLDER · replace with screenshot</text>
-<text x="160" y="222" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="600" fill="#c9ceda" text-anchor="start">Documents</text>
-<rect x="160" y="248" width="560" height="620" rx="12" fill="#1a202b" stroke="#252c38"/>
-<rect x="161" y="249" width="558" height="86" fill="#8cb0ff" fill-opacity="0.07"/>
-<rect x="184" y="272" width="32" height="40" rx="5" fill="none" stroke="#6b7485" stroke-width="1.5"/>
-<rect x="236" y="278" width="220" height="10" rx="5" fill="#303848"/>
-<rect x="236" y="300" width="140" height="8" rx="5" fill="#252c38"/>
-<rect x="570" y="280" width="126" height="24" rx="12" fill="#8cb0ff" fill-opacity="0.15"/>
-<text x="633" y="297" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="12" font-weight="400" fill="#8cb0ff" text-anchor="middle">In transit</text>
-<line x1="160" y1="336" x2="720" y2="336" stroke="#252c38"/>
-<rect x="184" y="360" width="32" height="40" rx="5" fill="none" stroke="#6b7485" stroke-width="1.5"/>
-<rect x="236" y="366" width="220" height="10" rx="5" fill="#303848"/>
-<rect x="236" y="388" width="140" height="8" rx="5" fill="#252c38"/>
-<rect x="570" y="368" width="126" height="24" rx="12" fill="#5fd3a3" fill-opacity="0.15"/>
-<text x="633" y="385" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="12" font-weight="400" fill="#5fd3a3" text-anchor="middle">Received</text>
-<line x1="160" y1="424" x2="720" y2="424" stroke="#252c38"/>
-<rect x="184" y="448" width="32" height="40" rx="5" fill="none" stroke="#6b7485" stroke-width="1.5"/>
-<rect x="236" y="454" width="220" height="10" rx="5" fill="#303848"/>
-<rect x="236" y="476" width="140" height="8" rx="5" fill="#252c38"/>
-<rect x="570" y="456" width="126" height="24" rx="12" fill="#e6b35c" fill-opacity="0.15"/>
-<text x="633" y="473" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="12" font-weight="400" fill="#e6b35c" text-anchor="middle">Overdue</text>
-<line x1="160" y1="512" x2="720" y2="512" stroke="#252c38"/>
-<rect x="184" y="536" width="32" height="40" rx="5" fill="none" stroke="#6b7485" stroke-width="1.5"/>
-<rect x="236" y="542" width="220" height="10" rx="5" fill="#303848"/>
-<rect x="236" y="564" width="140" height="8" rx="5" fill="#252c38"/>
-<rect x="570" y="544" width="126" height="24" rx="12" fill="#5fd3a3" fill-opacity="0.15"/>
-<text x="633" y="561" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="12" font-weight="400" fill="#5fd3a3" text-anchor="middle">Received</text>
-<line x1="160" y1="600" x2="720" y2="600" stroke="#252c38"/>
-<rect x="184" y="624" width="32" height="40" rx="5" fill="none" stroke="#6b7485" stroke-width="1.5"/>
-<rect x="236" y="630" width="220" height="10" rx="5" fill="#303848"/>
-<rect x="236" y="652" width="140" height="8" rx="5" fill="#252c38"/>
-<rect x="570" y="632" width="126" height="24" rx="12" fill="#8cb0ff" fill-opacity="0.15"/>
-<text x="633" y="649" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="12" font-weight="400" fill="#8cb0ff" text-anchor="middle">In transit</text>
-<line x1="160" y1="688" x2="720" y2="688" stroke="#252c38"/>
-<rect x="184" y="712" width="32" height="40" rx="5" fill="none" stroke="#6b7485" stroke-width="1.5"/>
-<rect x="236" y="718" width="220" height="10" rx="5" fill="#303848"/>
-<rect x="236" y="740" width="140" height="8" rx="5" fill="#252c38"/>
-<rect x="570" y="720" width="126" height="24" rx="12" fill="#6b7485" fill-opacity="0.15"/>
-<text x="633" y="737" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="12" font-weight="400" fill="#6b7485" text-anchor="middle">Checked out</text>
-<line x1="160" y1="776" x2="720" y2="776" stroke="#252c38"/>
-<rect x="184" y="800" width="32" height="40" rx="5" fill="none" stroke="#6b7485" stroke-width="1.5"/>
-<rect x="236" y="806" width="220" height="10" rx="5" fill="#303848"/>
-<rect x="236" y="828" width="140" height="8" rx="5" fill="#252c38"/>
-<rect x="570" y="808" width="126" height="24" rx="12" fill="#5fd3a3" fill-opacity="0.15"/>
-<text x="633" y="825" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="12" font-weight="400" fill="#5fd3a3" text-anchor="middle">Received</text>
-<rect x="752" y="248" width="688" height="620" rx="12" fill="#1a202b" stroke="#252c38"/>
-<text x="784" y="292" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#c9ceda" text-anchor="start">Routing history</text>
-<line x1="800" y1="362" x2="800" y2="438" stroke="#5fd3a3" stroke-width="2" />
-<circle cx="800" cy="350" r="11" fill="#141922" stroke="#5fd3a3" stroke-width="2.5"/>
-<circle cx="800" cy="350" r="4" fill="#5fd3a3"/>
-<text x="830" y="355" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="400" fill="#c9ceda" text-anchor="start">Registered</text>
-<rect x="830" y="372" width="200" height="8" rx="5" fill="#252c38"/>
-<line x1="800" y1="462" x2="800" y2="538" stroke="#5fd3a3" stroke-width="2" />
-<circle cx="800" cy="450" r="11" fill="#141922" stroke="#5fd3a3" stroke-width="2.5"/>
-<circle cx="800" cy="450" r="4" fill="#5fd3a3"/>
-<text x="830" y="455" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="400" fill="#c9ceda" text-anchor="start">Office A · received</text>
-<rect x="830" y="472" width="200" height="8" rx="5" fill="#252c38"/>
-<line x1="800" y1="562" x2="800" y2="638" stroke="#5fd3a3" stroke-width="2" />
-<circle cx="800" cy="550" r="11" fill="#141922" stroke="#5fd3a3" stroke-width="2.5"/>
-<circle cx="800" cy="550" r="4" fill="#5fd3a3"/>
-<text x="830" y="555" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="400" fill="#c9ceda" text-anchor="start">Checked out to personnel</text>
-<rect x="830" y="572" width="200" height="8" rx="5" fill="#252c38"/>
-<line x1="800" y1="662" x2="800" y2="738" stroke="#8cb0ff" stroke-width="2" stroke-dasharray="5 6"/>
-<circle cx="800" cy="650" r="11" fill="#141922" stroke="#8cb0ff" stroke-width="2.5"/>
-<circle cx="800" cy="650" r="4" fill="#8cb0ff"/>
-<text x="830" y="655" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="400" fill="#c9ceda" text-anchor="start">Office B · in transit</text>
-<rect x="830" y="672" width="200" height="8" rx="5" fill="#252c38"/>
-<circle cx="800" cy="750" r="11" fill="#141922" stroke="#303848" stroke-width="2.5"/>
-<text x="830" y="755" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="400" fill="#6b7485" text-anchor="start">Office C</text>
-<rect x="830" y="772" width="200" height="8" rx="5" fill="#252c38"/>
+  <rect width="1600" height="1000" fill="#f5eee4"/>
+  <rect x="260" y="150" width="1080" height="700" rx="34" fill="#fffaf3" stroke="#7a6254" stroke-width="5"/>
+  <path d="M260 184a34 34 0 0 1 34-34h1012a34 34 0 0 1 34 34v46H260z" fill="#8a6f60" stroke="#7a6254" stroke-width="5"/>
+  <circle cx="304" cy="190" r="9" fill="#fffaf3"/><circle cx="336" cy="190" r="9" fill="#fffaf3"/><circle cx="368" cy="190" r="9" fill="#fffaf3"/>
+  <path d="M380 330h70l34 34v106a14 14 0 0 1-14 14H380a14 14 0 0 1-14-14V344a14 14 0 0 1 14-14z" fill="#ecd3c4" stroke="#7a6254" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M450 330v34h34" fill="none" stroke="#7a6254" stroke-width="5" stroke-linejoin="round"/>
+  <rect x="396" y="400" width="60" height="10" rx="5" fill="#dccfbe"/>
+  <rect x="396" y="426" width="72" height="10" rx="5" fill="#dccfbe"/>
+  <rect x="396" y="452" width="44" height="10" rx="5" fill="#dccfbe"/>
+  <text x="432" y="560" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="600" fill="#7a6254" text-anchor="middle">Registered</text>
+  <path d="M520 420h90" stroke="#b98068" stroke-width="5" stroke-linecap="round"/>
+  <path d="M598 406l14 14-14 14" fill="none" stroke="#b98068" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M640 330h70l34 34v106a14 14 0 0 1-14 14H640a14 14 0 0 1-14-14V344a14 14 0 0 1 14-14z" fill="#fffaf3" stroke="#7a6254" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M710 330v34h34" fill="none" stroke="#7a6254" stroke-width="5" stroke-linejoin="round"/>
+  <rect x="656" y="400" width="60" height="10" rx="5" fill="#dccfbe"/>
+  <rect x="656" y="426" width="72" height="10" rx="5" fill="#dccfbe"/>
+  <rect x="656" y="452" width="44" height="10" rx="5" fill="#dccfbe"/>
+  <text x="692" y="560" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="600" fill="#7a6254" text-anchor="middle">Office A</text>
+  <path d="M780 420h90" stroke="#b98068" stroke-width="5" stroke-linecap="round"/>
+  <path d="M858 406l14 14-14 14" fill="none" stroke="#b98068" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M900 330h70l34 34v106a14 14 0 0 1-14 14H900a14 14 0 0 1-14-14V344a14 14 0 0 1 14-14z" fill="#fffaf3" stroke="#7a6254" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M970 330v34h34" fill="none" stroke="#7a6254" stroke-width="5" stroke-linejoin="round"/>
+  <rect x="916" y="400" width="60" height="10" rx="5" fill="#dccfbe"/>
+  <rect x="916" y="426" width="72" height="10" rx="5" fill="#dccfbe"/>
+  <rect x="916" y="452" width="44" height="10" rx="5" fill="#dccfbe"/>
+  <text x="952" y="560" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="600" fill="#7a6254" text-anchor="middle">Office B</text>
+  <path d="M1040 420h90" stroke="#b98068" stroke-width="5" stroke-linecap="round" stroke-dasharray="14 12"/>
+  <path d="M1118 406l14 14-14 14" fill="none" stroke="#b98068" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1160 330h70l34 34v106a14 14 0 0 1-14 14H1160a14 14 0 0 1-14-14V344a14 14 0 0 1 14-14z" fill="#e9dfd1" stroke="#7a6254" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M1230 330v34h34" fill="none" stroke="#7a6254" stroke-width="5" stroke-linejoin="round"/>
+  <rect x="1176" y="400" width="60" height="10" rx="5" fill="#dccfbe"/>
+  <rect x="1176" y="426" width="72" height="10" rx="5" fill="#dccfbe"/>
+  <rect x="1176" y="452" width="44" height="10" rx="5" fill="#dccfbe"/>
+  <text x="1212" y="560" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="26" font-weight="600" fill="#7a6254" text-anchor="middle">Office C</text>
+  <rect x="330" y="620" width="940" height="180" rx="22" fill="#e9dfd1"/>
+  <circle cx="370" cy="662" r="12" fill="#a9b596" stroke="#7a6254" stroke-width="4"/>
+  <rect x="400" y="652" width="300" height="20" rx="10" fill="#fffaf3"/>
+  <rect x="1060" y="648" width="170" height="28" rx="14" fill="#a9b596"/>
+  <circle cx="370" cy="710" r="12" fill="#ecd3c4" stroke="#7a6254" stroke-width="4"/>
+  <rect x="400" y="700" width="240" height="20" rx="10" fill="#fffaf3"/>
+  <rect x="1060" y="696" width="170" height="28" rx="14" fill="#ecd3c4"/>
+  <circle cx="370" cy="758" r="12" fill="#dccfbe" stroke="#7a6254" stroke-width="4"/>
+  <rect x="400" y="748" width="200" height="20" rx="10" fill="#fffaf3"/>
+  <rect x="1060" y="744" width="170" height="28" rx="14" fill="#dccfbe"/>
+  <text x="1560" y="970" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" fill="#7a6254" fill-opacity="0.55">Illustration · placeholder</text>
 </svg>

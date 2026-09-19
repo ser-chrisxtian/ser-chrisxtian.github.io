@@ -1,120 +1,67 @@
-<section id="home" class="relative isolate overflow-hidden" aria-labelledby="hero-title">
-  <!-- Background: technical grid + soft accent glow -->
-  <div class="bg-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
+<section id="home" class="relative overflow-hidden" aria-labelledby="hero-title">
   <div
-    class="pointer-events-none absolute top-[-20%] left-1/2 -z-10 h-[520px] w-[900px] -translate-x-1/2 rounded-full blur-3xl"
-    style="background: radial-gradient(closest-side, var(--glow), transparent)"
-    aria-hidden="true"
-  ></div>
-
-  <div
-    class="container-page grid items-center gap-14 pt-14 pb-20 sm:pt-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:pt-28 lg:pb-32"
+    class="container-page grid grid-cols-[minmax(0,1fr)] items-center gap-12 pt-10 pb-20 sm:pt-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-10 lg:pt-20 lg:pb-28"
   >
     <!-- Introduction -->
-    <div>
-      <p
-        class="page-enter inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3 py-1 font-mono text-xs text-muted"
-      >
-        <span class="size-1.5 rounded-full bg-signal" aria-hidden="true"></span>
-        Technology · Software Development · Education
-      </p>
-
+    <div class="page-enter">
       <h1
         id="hero-title"
-        class="mt-6 text-4xl font-semibold tracking-tight text-ink sm:text-5xl lg:text-6xl"
+        class="text-5xl leading-[1.05] font-medium tracking-tight text-ink sm:text-6xl lg:text-7xl"
       >
-        {{ profile.name }}
+        <span class="block">Hello, I’m</span>
+        <span class="block">{{ profile.name }}</span>
       </h1>
 
       <p
-        class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-sm text-accent sm:text-base"
+        class="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 font-display text-xl text-ink-soft sm:text-2xl"
       >
         @for (role of profile.roles; track role; let last = $last) {
-          <span>{{ role }}</span>
+          <span class="whitespace-nowrap">{{ role }}</span>
           @if (!last) {
-            <span class="text-line-strong" aria-hidden="true">•</span>
+            <span class="text-accent-text" aria-hidden="true">•</span>
           }
         }
       </p>
 
-      <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted">
         {{ profile.summary }}
       </p>
 
-      <div class="mt-9 flex flex-wrap gap-3">
-        <a routerLink="/" fragment="projects" class="btn btn-primary">
-          View Projects
-          <svg appIcon="arrow-right" class="size-4"></svg>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a routerLink="/" fragment="projects" class="btn btn-primary min-h-14 px-8 text-base">
+          View my work
         </a>
-        <a routerLink="/" fragment="about" class="btn btn-secondary">About Me</a>
+        <a routerLink="/" fragment="about" class="btn btn-secondary min-h-14">About me</a>
         @if (hasGithub) {
           <a
             [href]="profile.githubUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn btn-secondary"
+            class="btn btn-secondary min-h-14"
           >
             <svg appIcon="github" class="size-4"></svg>
             GitHub
           </a>
         }
-        <app-resume-button />
+        <app-resume-button class="[&_.btn]:min-h-14" />
       </div>
     </div>
 
-    <!-- Code card + architecture strip (decorative) -->
-    <div class="relative" aria-hidden="true">
-      <div class="card overflow-hidden">
-        <div class="flex items-center gap-2 border-b border-line bg-surface-2 px-4 py-3">
-          <span class="size-2.5 rounded-full bg-line-strong"></span>
-          <span class="size-2.5 rounded-full bg-line-strong"></span>
-          <span class="size-2.5 rounded-full bg-line-strong"></span>
-          <span class="ml-3 font-mono text-xs text-muted">profile.ts</span>
-        </div>
-
-        <pre
-          class="overflow-x-auto px-0 py-4 font-mono text-[12.5px] leading-6 sm:text-[13px]"
-        ><code>@for (line of codeLines; track $index; let i = $index; let last = $last) {<span class="flex"><span class="w-10 shrink-0 pr-4 text-right text-muted/60 select-none">{{ i + 1 }}</span><span>@for (token of line; track $index) {<span [class]="token.kind ? tokenClass[token.kind] : ''">{{ token.text }}</span>}@if (last) {<span class="caret ml-0.5 inline-block h-4 w-[7px] translate-y-0.5 bg-accent"></span>}</span></span>}</code></pre>
-
-        <!-- Minimal system diagram: client → API → database -->
-        <div class="border-t border-line bg-surface-2/60 px-5 py-4">
-          <svg viewBox="0 0 320 44" class="h-11 w-full" fill="none">
-            <line
-              x1="76"
-              y1="22"
-              x2="122"
-              y2="22"
-              class="flow-line stroke-accent"
-              stroke-width="1.25"
-            />
-            <line
-              x1="198"
-              y1="22"
-              x2="244"
-              y2="22"
-              class="flow-line stroke-accent"
-              stroke-width="1.25"
-            />
-            @for (node of diagramNodes; track node.label) {
-              <rect
-                [attr.x]="node.x"
-                y="8"
-                width="74"
-                height="28"
-                rx="6"
-                class="fill-surface stroke-line-strong"
-              />
-              <text
-                [attr.x]="node.x + 37"
-                y="26"
-                text-anchor="middle"
-                class="fill-muted font-mono text-[10px]"
-              >
-                {{ node.label }}
-              </text>
-            }
-          </svg>
-        </div>
+    <!-- Portrait / illustration in a soft circle -->
+    <div class="relative mx-auto w-full max-w-md lg:max-w-none">
+      <div class="relative aspect-square overflow-hidden rounded-full bg-tile">
+        @if (profile.photo; as photo) {
+          <img
+            [src]="photo.src"
+            [alt]="photo.alt"
+            width="800"
+            height="800"
+            fetchpriority="high"
+            class="size-full object-cover"
+          />
+        } @else {
+          <app-workspace-illustration class="absolute inset-0" />
+        }
       </div>
     </div>
   </div>

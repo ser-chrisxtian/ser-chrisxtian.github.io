@@ -4,65 +4,80 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
- * Design tokens.
- * Components use semantic utilities (bg-canvas, text-ink, border-line, text-accent …)
- * so both themes are tuned independently instead of being inverted.
+ * Design tokens — warm, minimal palette: cream paper, soft beige tiles,
+ * and a terracotta accent. Components use semantic utilities
+ * (bg-canvas, text-ink, bg-tile, bg-accent …) so each theme is tuned on its own.
  */
 :root {
-  --canvas: #f7f7f5;
-  --surface: #ffffff;
-  --surface-2: #f1f2f0;
-  --ink: #111418;
-  --ink-soft: #3a414b;
-  --muted: #5c6470;
-  --line: #e2e4e1;
-  --line-strong: #cfd3cf;
-  --accent: #1f4fd1;
-  --accent-soft: #e8eefc;
+  --canvas: #faf6ef;
+  --canvas-alt: #f4eee4;
+  --surface: #fffdf9;
+  --tile: #ece4d8;
+  --tile-strong: #e2d7c7;
+  --ink: #221c18;
+  --ink-soft: #473d36;
+  --muted: #6e6259;
+  --line: #e7dfd3;
+  --line-strong: #d6cabb;
+  /* Filled buttons: white text on this passes WCAG AA (≈5:1). */
+  --accent: #9a624c;
+  --accent-hover: #87533f;
   --accent-ink: #ffffff;
-  --signal: #0f7a55;
-  --grid: rgb(17 20 24 / 0.045);
-  --glow: rgb(31 79 209 / 0.1);
-  --shadow: 0 1px 2px rgb(17 20 24 / 0.04), 0 8px 24px -12px rgb(17 20 24 / 0.12);
-  --header-h: 4rem;
+  /* Accent used for text/icons on the cream background. */
+  --accent-text: #8c563f;
+  --accent-soft: #f1e2d8;
+  /* Illustration colors. */
+  --art-line: #6b5446;
+  --art-fill: #f7ede3;
+  --art-warm: #b98068;
+  --art-leaf: #9fae8c;
+  --shadow: 0 1px 2px rgb(60 40 30 / 0.04), 0 12px 32px -18px rgb(60 40 30 / 0.22);
   color-scheme: light;
 }
 
 :root.dark {
-  --canvas: #0a0c10;
-  --surface: #0f1217;
-  --surface-2: #151920;
-  --ink: #e8eaef;
-  --ink-soft: #c3c8d2;
-  --muted: #949cab;
-  --line: #1f242d;
-  --line-strong: #2c323d;
-  --accent: #8cb0ff;
-  --accent-soft: rgb(140 176 255 / 0.1);
-  --accent-ink: #0a0c10;
-  --signal: #5fd3a3;
-  --grid: rgb(232 234 239 / 0.035);
-  --glow: rgb(140 176 255 / 0.09);
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px -16px rgb(0 0 0 / 0.6);
+  --canvas: #1b1613;
+  --canvas-alt: #201a16;
+  --surface: #26201b;
+  --tile: #2e2621;
+  --tile-strong: #3a302a;
+  --ink: #f4ede5;
+  --ink-soft: #ddd2c6;
+  --muted: #b3a598;
+  --line: #342b25;
+  --line-strong: #473b33;
+  --accent: #d39a7f;
+  --accent-hover: #e0ab92;
+  --accent-ink: #1b1613;
+  --accent-text: #e2ab91;
+  --accent-soft: rgb(211 154 127 / 0.14);
+  --art-line: #d9c4b3;
+  --art-fill: #3a302a;
+  --art-warm: #b67a61;
+  --art-leaf: #7f8f6e;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 14px 36px -20px rgb(0 0 0 / 0.7);
   color-scheme: dark;
 }
 
 @theme inline {
-  --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --font-sans: 'Figtree', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Outfit', 'Figtree', ui-sans-serif, system-ui, sans-serif;
 
   --color-canvas: var(--canvas);
+  --color-canvas-alt: var(--canvas-alt);
   --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
+  --color-tile: var(--tile);
+  --color-tile-strong: var(--tile-strong);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
   --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
+  --color-accent-hover: var(--accent-hover);
   --color-accent-ink: var(--accent-ink);
-  --color-signal: var(--signal);
+  --color-accent-text: var(--accent-text);
+  --color-accent-soft: var(--accent-soft);
 
   --shadow-card: var(--shadow);
 }
@@ -78,6 +93,17 @@
     text-rendering: optimizeLegibility;
   }
 
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
   ::selection {
     background: var(--accent);
     color: var(--accent-ink);
@@ -86,17 +112,7 @@
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
-    border-radius: 6px;
-  }
-
-  h1,
-  h2,
-  h3 {
-    text-wrap: balance;
-  }
-
-  p {
-    text-wrap: pretty;
+    border-radius: 8px;
   }
 }
 
@@ -105,46 +121,42 @@
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
-  /* Technical grid backdrop, faded toward the edges. */
-  .bg-grid {
-    background-image:
-      linear-gradient(to right, var(--grid) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-    background-size: 44px 44px;
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 40%, transparent 100%);
+  .section-title {
+    @apply font-display text-4xl font-medium tracking-tight text-ink sm:text-5xl;
   }
 
   .card {
-    @apply rounded-2xl border border-line bg-surface shadow-card;
+    @apply rounded-3xl border border-line bg-surface shadow-card;
   }
 
-  .eyebrow {
-    @apply font-mono text-xs tracking-[0.14em] text-accent uppercase;
+  /* Small uppercase label, e.g. "Overview" on project pages. */
+  .label {
+    @apply text-xs font-semibold tracking-[0.12em] text-accent-text uppercase;
   }
 
   .btn {
-    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium whitespace-nowrap transition-[background-color,border-color,color,transform] duration-200 select-none active:translate-y-px;
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl px-6 font-display text-[15px] font-medium whitespace-nowrap transition-[background-color,border-color,color,transform,box-shadow] duration-200 select-none active:translate-y-px;
   }
 
   .btn-primary {
-    @apply bg-ink text-canvas hover:bg-ink-soft;
+    @apply bg-accent text-accent-ink shadow-[0_6px_16px_-8px_var(--accent)] hover:bg-accent-hover;
   }
 
   .btn-secondary {
-    @apply border border-line-strong bg-surface text-ink hover:border-muted;
+    @apply border border-line-strong bg-transparent text-ink hover:border-accent hover:text-accent-text;
   }
 
   .btn-ghost {
-    @apply text-ink-soft hover:bg-surface-2 hover:text-ink;
+    @apply text-ink-soft hover:bg-tile hover:text-ink;
   }
 
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-md border border-line bg-surface-2 px-2 py-0.5 font-mono text-xs text-ink-soft;
+    @apply inline-flex items-center gap-1.5 rounded-full bg-tile px-3 py-1 text-[13px] text-ink-soft;
   }
 
   /* Values in the data files wrapped in [brackets] are placeholders awaiting real content. */
   .placeholder-text {
-    @apply rounded border border-dashed border-line-strong px-1.5 font-mono text-[0.85em] text-muted;
+    @apply rounded-md border border-dashed border-line-strong px-1.5 text-[0.9em] text-muted;
   }
 }
 
@@ -161,26 +173,6 @@
 .reveal.is-visible {
   opacity: 1;
   transform: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    transition-delay: 0ms !important;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 /* Enter/leave animations used with Angular's animate.enter / animate.leave. */
@@ -241,16 +233,15 @@
   animation: fade-in 0.35s ease-out;
 }
 
-/* Hero architecture diagram: slow data-flow dashes. */
-@keyframes dash-flow {
-  to {
-    stroke-dashoffset: -20;
+/* Hero illustration: a gentle float and a blinking cursor on the laptop. */
+@keyframes float {
+  50% {
+    transform: translateY(-6px);
   }
 }
 
-.flow-line {
-  stroke-dasharray: 4 6;
-  animation: dash-flow 1.6s linear infinite;
+.float {
+  animation: float 6s ease-in-out infinite;
 }
 
 @keyframes caret-blink {
@@ -264,7 +255,25 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .flow-line,
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .float,
   .caret {
     animation: none;
   }

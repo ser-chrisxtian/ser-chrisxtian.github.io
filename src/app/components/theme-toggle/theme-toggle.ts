@@ -9,7 +9,7 @@ import { ThemeService } from '../../shared/theme.service';
   template: `
     <button
       type="button"
-      class="grid size-10 place-items-center rounded-lg text-ink-soft transition-colors hover:bg-surface-2 hover:text-ink"
+      class="grid size-10 place-items-center rounded-xl text-ink-soft transition-colors hover:bg-tile hover:text-ink"
       [attr.aria-label]="label()"
       [attr.title]="label()"
       (click)="theme.toggle()"

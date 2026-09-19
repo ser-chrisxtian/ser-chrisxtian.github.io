@@ -36,6 +36,11 @@ export interface Profile {
   linkedinUrl: string;
   /** Additional professional links (portfolio, publications, ORCID, etc.). */
   otherLinks: SocialLink[];
+  /**
+   * Optional portrait for the hero section, e.g. `images/profile.jpg` in `public/`.
+   * Leave undefined to show the illustrated workspace instead.
+   */
+  photo?: { src: string; alt: string };
   /** Path relative to the site root. The file itself lives in `public/`. */
   resumePath: string;
   siteUrl: string;

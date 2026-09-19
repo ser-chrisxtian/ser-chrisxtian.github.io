@@ -13,49 +13,45 @@ type Filter = ProjectCategory | 'All';
   template: `
     <section
       id="projects"
-      class="scroll-mt-16 border-t border-line py-24 sm:py-32"
+      class="scroll-mt-20 bg-canvas-alt py-24 sm:py-28"
       aria-labelledby="projects-title"
     >
       <div class="container-page">
-        <div class="flex flex-col gap-8">
-          <app-section-heading
-            index="03"
-            eyebrow="Projects"
-            headingId="projects-title"
-            title="Selected work"
-            description="Information systems and applications built around real academic, administrative, and safety needs."
-          />
+        <app-section-heading
+          headingId="projects-title"
+          title="Featured Projects"
+          description="Information systems and applications built around real academic, administrative, and safety needs."
+        />
 
-          @if (filters.length > 2) {
-            <div
-              appReveal
-              class="flex w-fit max-w-full gap-1.5 overflow-x-auto rounded-xl border border-line bg-surface p-1.5 [scrollbar-width:none] sm:flex-wrap"
-              role="group"
-              aria-label="Filter projects by category"
-            >
-              @for (filter of filters; track filter) {
-                <button
-                  type="button"
-                  class="min-h-9 shrink-0 rounded-lg px-3 text-sm whitespace-nowrap transition-colors duration-200"
-                  [class]="
-                    active() === filter
-                      ? 'bg-ink text-canvas'
-                      : 'text-muted hover:bg-surface-2 hover:text-ink'
-                  "
-                  [attr.aria-pressed]="active() === filter"
-                  (click)="active.set(filter)"
-                >
-                  {{ filter }}
-                  <span class="ml-1 font-mono text-xs opacity-60">{{ countFor(filter) }}</span>
-                </button>
-              }
-            </div>
-          }
-        </div>
+        @if (filters.length > 2) {
+          <div
+            appReveal
+            class="mt-8 flex max-w-full gap-2 overflow-x-auto pb-1 [scrollbar-width:none] sm:flex-wrap"
+            role="group"
+            aria-label="Filter projects by category"
+          >
+            @for (filter of filters; track filter) {
+              <button
+                type="button"
+                class="min-h-10 shrink-0 rounded-full px-4 text-[15px] whitespace-nowrap transition-colors duration-200"
+                [class]="
+                  active() === filter
+                    ? 'bg-accent text-accent-ink'
+                    : 'bg-tile text-ink-soft hover:bg-tile-strong hover:text-ink'
+                "
+                [attr.aria-pressed]="active() === filter"
+                (click)="active.set(filter)"
+              >
+                {{ filter }}
+                <span class="ml-1 text-sm opacity-70">{{ countFor(filter) }}</span>
+              </button>
+            }
+          </div>
+        }
 
         <p class="sr-only" aria-live="polite">{{ visible().length }} projects shown</p>
 
-        <ul class="mt-12 grid gap-6 md:grid-cols-2">
+        <ul class="mt-10 grid gap-x-8 gap-y-14 md:grid-cols-2">
           @for (project of visible(); track project.id; let i = $index) {
             <li animate.enter="card-enter" [style.animation-delay.ms]="i * 60">
               <app-project-card [project]="project" />

@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect x="2" y="2" width="60" height="60" rx="14" fill="#0a0c10" stroke="#2c323d" stroke-width="2"/>
-  <text x="32" y="39" text-anchor="middle" font-family="ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace" font-size="23" font-weight="700" fill="#e8eaef" letter-spacing="-0.5">CP</text>
-  <rect x="20" y="46" width="24" height="3" rx="1.5" fill="#8cb0ff"/>
+  <rect width="64" height="64" rx="18" fill="#9a624c"/>
+  <text x="32" y="41" text-anchor="middle" font-family="'Outfit', 'Avenir Next', 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="600" fill="#faf6ef" letter-spacing="-0.5">CP</text>
 </svg>

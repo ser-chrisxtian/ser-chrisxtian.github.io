@@ -4,7 +4,7 @@ export type Theme = 'dark' | 'light';
 
 /** Must match the key used by the inline script in index.html (prevents a theme flash). */
 const STORAGE_KEY = 'theme';
-const THEME_COLORS: Record<Theme, string> = { dark: '#0a0c10', light: '#f7f7f5' };
+const THEME_COLORS: Record<Theme, string> = { dark: '#1b1613', light: '#faf6ef' };
 
 /**
  * Theme preference: saved choice → operating-system preference → dark.

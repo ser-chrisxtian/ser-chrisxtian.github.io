@@ -10,9 +10,8 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
   host: { class: 'inline-flex' },
   template: `
     <span
-      class="chip transition-colors duration-200"
-      [class.border-line-strong]="usedIn().length > 0"
-      [class.text-ink]="usedIn().length > 0"
+      class="inline-flex items-center gap-1.5 rounded-full bg-surface px-3 py-1.5 text-sm transition-colors duration-200"
+      [class]="usedIn().length > 0 ? 'text-ink' : 'text-ink-soft'"
       [attr.title]="usageText()"
     >
       @if (usedIn().length > 0) {

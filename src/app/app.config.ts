@@ -14,7 +14,7 @@ import {
 import { routes } from './app.routes';
 
 /** Height of the sticky navbar plus a little breathing room, used when scrolling to #sections. */
-const ANCHOR_OFFSET_PX = 72;
+const ANCHOR_OFFSET_PX = 80;
 
 export const appConfig: ApplicationConfig = {
   providers: [

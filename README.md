@@ -8,7 +8,7 @@ A fast, fully static Angular site with dark/light themes, data-driven content, a
 
 - **Angular 22**: standalone components, signals, zoneless change detection, lazy-loaded routes
 - **TypeScript** (strict mode)
-- **Tailwind CSS 4** with design tokens for both themes (`src/styles.css`)
+- **Tailwind CSS 4** with design tokens for both themes (`src/styles.css`): warm cream / terracotta light theme and an espresso-brown dark theme
 - **Angular Router**: `/` and `/projects/:id`
 - Native CSS animations plus Angular `animate.enter` / `animate.leave` (no animation library)
 - **Vitest** for unit tests
@@ -80,6 +80,14 @@ Notes:
 - **Social links:** set `email`, `githubUrl`, `linkedinUrl`, and `otherLinks` in `profile.ts`. A real email address automatically becomes a `mailto:` link.
 - **Skills:** technologies whose names also appear in a project's `technologies` list are marked in the Skills section and linked to those projects. Keep the spelling consistent.
 - **Experience / Education:** append objects to the arrays to add more entries.
+
+### Hero photo
+
+The hero shows an illustrated workspace by default. To use a real portrait instead, add a square image (at least 800×800) to `public/images/`, then set it in `profile.ts`:
+
+```ts
+photo: { src: 'images/profile.jpg', alt: 'Portrait of Christian B. Peña' },
+```
 
 ### Adding a project
 

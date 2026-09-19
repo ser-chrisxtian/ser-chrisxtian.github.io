@@ -1,48 +1,51 @@
 <header
-  class="sticky top-0 z-50 border-b transition-[background-color,border-color] duration-300"
+  class="sticky top-0 z-50 transition-[background-color,box-shadow] duration-300"
   [class]="
     scrolled() || menuOpen()
-      ? 'border-line bg-canvas/85 backdrop-blur-md supports-[backdrop-filter]:bg-canvas/75'
-      : 'border-transparent bg-canvas/0'
+      ? 'bg-canvas/90 shadow-[0_1px_0_var(--line)] backdrop-blur-md'
+      : 'bg-canvas/0'
   "
 >
-  <nav class="container-page flex h-16 items-center justify-between gap-4" aria-label="Primary">
-    <!-- Brand -->
+  <nav class="container-page flex h-18 items-center justify-between gap-4" aria-label="Primary">
+    <!-- Wordmark -->
     <a
       routerLink="/"
       fragment="home"
-      class="group flex items-center gap-3 rounded-lg"
-      aria-label="{{ profile.name }} — home"
+      class="rounded-lg font-display text-xl font-semibold tracking-tight text-ink transition-colors hover:text-accent-text"
     >
-      <span
-        class="grid size-9 place-items-center rounded-lg border border-line-strong bg-surface font-mono text-[13px] font-semibold text-ink transition-colors group-hover:border-accent group-hover:text-accent"
-        aria-hidden="true"
-      >
-        {{ profile.initials }}
-      </span>
-      <span class="text-[15px] font-semibold tracking-tight text-ink">{{ profile.name }}</span>
+      {{ profile.name }}
     </a>
 
     <!-- Desktop navigation -->
-    <ul class="hidden items-center gap-0.5 lg:flex">
-      @for (section of sections; track section.id) {
+    <ul class="hidden items-center gap-1 lg:flex">
+      @for (section of linkSections; track section.id) {
         <li>
           <a
             routerLink="/"
             [fragment]="section.id"
-            class="relative block rounded-md px-3 py-2 text-sm transition-colors duration-200"
-            [class]="active() === section.id ? 'text-ink' : 'text-muted hover:text-ink'"
+            class="relative block rounded-lg px-3 py-2 text-[15px] transition-colors duration-200"
+            [class]="active() === section.id ? 'text-ink' : 'text-ink-soft hover:text-accent-text'"
             [attr.aria-current]="active() === section.id ? 'location' : null"
           >
             {{ section.label }}
             <span
-              class="absolute inset-x-3 -bottom-px h-px origin-center bg-accent transition-transform duration-300"
-              [class]="active() === section.id ? 'scale-x-100' : 'scale-x-0'"
+              class="absolute -bottom-0.5 left-1/2 size-1 -translate-x-1/2 rounded-full bg-accent transition-transform duration-300"
+              [class]="active() === section.id ? 'scale-100' : 'scale-0'"
               aria-hidden="true"
             ></span>
           </a>
         </li>
       }
+      <li class="ml-2">
+        <a
+          routerLink="/"
+          fragment="contact"
+          class="btn btn-primary min-h-10 rounded-xl px-5"
+          [attr.aria-current]="active() === 'contact' ? 'location' : null"
+        >
+          Contact
+        </a>
+      </li>
     </ul>
 
     <!-- Actions -->
@@ -53,7 +56,7 @@
           [href]="profile.githubUrl"
           target="_blank"
           rel="noopener noreferrer"
-          class="hidden size-10 place-items-center rounded-lg text-ink-soft transition-colors hover:bg-surface-2 hover:text-ink sm:grid"
+          class="hidden size-10 place-items-center rounded-xl text-ink-soft transition-colors hover:bg-tile hover:text-ink sm:grid"
           aria-label="GitHub profile (opens in a new tab)"
           title="GitHub"
         >
@@ -62,7 +65,7 @@
       }
       <button
         type="button"
-        class="grid size-10 place-items-center rounded-lg text-ink transition-colors hover:bg-surface-2 lg:hidden"
+        class="grid size-10 place-items-center rounded-xl text-ink transition-colors hover:bg-tile lg:hidden"
         [attr.aria-expanded]="menuOpen()"
         aria-controls="mobile-menu"
         [attr.aria-label]="menuOpen() ? 'Close menu' : 'Open menu'"
@@ -77,26 +80,21 @@
   @if (menuOpen()) {
     <div
       id="mobile-menu"
-      class="absolute inset-x-0 top-full border-b border-line bg-canvas shadow-card lg:hidden"
+      class="absolute inset-x-0 top-full rounded-b-3xl border-b border-line bg-canvas shadow-card lg:hidden"
       animate.enter="menu-in"
       animate.leave="menu-out"
     >
       <ul class="container-page grid gap-1 py-4">
-        @for (section of sections; track section.id; let i = $index) {
+        @for (section of sections; track section.id) {
           <li>
             <a
               routerLink="/"
               [fragment]="section.id"
-              class="flex min-h-12 items-center gap-4 rounded-lg px-3 text-base transition-colors"
-              [class]="
-                active() === section.id
-                  ? 'bg-surface-2 text-ink'
-                  : 'text-ink-soft hover:bg-surface-2'
-              "
+              class="flex min-h-12 items-center rounded-2xl px-4 font-display text-lg transition-colors"
+              [class]="active() === section.id ? 'bg-tile text-ink' : 'text-ink-soft hover:bg-tile'"
               [attr.aria-current]="active() === section.id ? 'location' : null"
               (click)="closeMenu()"
             >
-              <span class="w-6 font-mono text-xs text-muted">0{{ i }}</span>
               {{ section.label }}
               @if (active() === section.id) {
                 <span class="ml-auto size-1.5 rounded-full bg-accent" aria-hidden="true"></span>
@@ -127,7 +125,7 @@
 @if (menuOpen()) {
   <button
     type="button"
-    class="fixed inset-0 top-16 z-40 cursor-default bg-canvas/70 backdrop-blur-sm lg:hidden"
+    class="fixed inset-0 top-18 z-40 cursor-default bg-canvas/70 backdrop-blur-sm lg:hidden"
     aria-label="Close menu"
     tabindex="-1"
     (click)="closeMenu()"

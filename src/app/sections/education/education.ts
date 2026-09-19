@@ -12,43 +12,45 @@ import { isPlaceholder } from '../../shared/placeholder';
   template: `
     <section
       id="education"
-      class="scroll-mt-16 border-t border-line py-24 sm:py-32"
+      class="scroll-mt-20 bg-canvas-alt py-24 sm:py-28"
       aria-labelledby="education-title"
     >
-      <div class="container-page grid gap-12 lg:grid-cols-12">
+      <div class="container-page grid gap-10 lg:grid-cols-12 lg:items-center">
         <div class="lg:col-span-5">
           <app-section-heading
-            index="05"
-            eyebrow="Education"
             headingId="education-title"
-            title="Academic background"
-            description="Formal education in information technology, the foundation for both my teaching and development work."
+            title="Education"
+            description="Formal education in information technology — the foundation for both my teaching and development work."
           />
         </div>
 
-        <ul class="space-y-4 lg:col-span-7 lg:pt-10">
+        <ul class="space-y-5 lg:col-span-7">
           @for (item of entries; track $index; let i = $index) {
-            <li appReveal [revealDelay]="i * 80" class="card flex gap-5 p-6 sm:p-7">
+            <li
+              appReveal
+              [revealDelay]="i * 80"
+              class="flex gap-5 rounded-3xl bg-surface p-7 shadow-card sm:p-8"
+            >
               <span
-                class="grid size-11 shrink-0 place-items-center rounded-xl border border-line bg-surface-2 text-accent"
+                class="grid size-14 shrink-0 place-items-center rounded-2xl bg-accent-soft text-accent-text"
                 aria-hidden="true"
               >
-                <svg appIcon="graduation-cap" class="size-5"></svg>
+                <svg appIcon="graduation-cap" class="size-7"></svg>
               </span>
               <div>
-                <h3 class="text-lg font-semibold tracking-tight text-ink">{{ item.credential }}</h3>
-                <p class="mt-1 text-sm text-ink-soft">
+                <h3 class="text-xl font-medium text-ink sm:text-2xl">{{ item.credential }}</h3>
+                <p class="mt-2 text-ink-soft">
                   <span [class.placeholder-text]="isPlaceholder(item.institution)">{{
                     item.institution
                   }}</span>
                 </p>
-                <p class="mt-3 font-mono text-xs text-muted">
+                <p class="mt-2 text-sm text-muted">
                   <span [class.placeholder-text]="isPlaceholder(item.period)">{{
                     item.period
                   }}</span>
                 </p>
                 @if (item.details) {
-                  <p class="mt-4 text-sm leading-relaxed text-muted">{{ item.details }}</p>
+                  <p class="mt-4 leading-relaxed text-muted">{{ item.details }}</p>
                 }
               </div>
             </li>

@@ -22,39 +22,33 @@ function buildUsageIndex(): Map<string, string[]> {
   imports: [Icon, SectionHeading, TechBadge, Reveal],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section
-      id="skills"
-      class="scroll-mt-16 border-t border-line py-24 sm:py-32"
-      aria-labelledby="skills-title"
-    >
+    <section id="skills" class="scroll-mt-20 py-24 sm:py-28" aria-labelledby="skills-title">
       <div class="container-page">
         <app-section-heading
-          index="02"
-          eyebrow="Skills"
           headingId="skills-title"
-          title="Technology stack"
+          title="Skills & Tools"
           description="The languages, frameworks, and tools I work with, grouped by where they sit in a system."
         />
 
-        <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           @for (category of categories; track category.id; let i = $index) {
             <article
               appReveal
               [revealDelay]="(i % 3) * 80"
-              class="card flex flex-col p-6"
+              class="flex flex-col rounded-3xl bg-tile p-7"
               [attr.aria-labelledby]="'skill-' + category.id"
             >
               <div class="flex items-center gap-3">
                 <span
-                  class="grid size-9 place-items-center rounded-lg border border-line bg-surface-2 text-accent"
+                  class="grid size-11 place-items-center rounded-2xl bg-surface text-accent-text"
                 >
-                  <svg [appIcon]="category.icon" class="size-[18px]"></svg>
+                  <svg [appIcon]="category.icon" class="size-5"></svg>
                 </span>
-                <h3 [id]="'skill-' + category.id" class="text-base font-semibold text-ink">
+                <h3 [id]="'skill-' + category.id" class="text-xl font-medium text-ink">
                   {{ category.title }}
                 </h3>
               </div>
-              <p class="mt-3 text-sm leading-relaxed text-muted">{{ category.description }}</p>
+              <p class="mt-4 text-[15px] leading-relaxed text-muted">{{ category.description }}</p>
               <ul class="mt-5 flex flex-wrap gap-2">
                 @for (item of category.items; track item) {
                   <li><app-tech-badge [name]="item" [usedIn]="usage.get(item) ?? []" /></li>
@@ -67,22 +61,16 @@ function buildUsageIndex(): Map<string, string[]> {
           <aside
             appReveal
             [revealDelay]="160"
-            class="flex flex-col justify-between rounded-2xl border border-dashed border-line-strong p-6"
+            class="flex flex-col justify-center rounded-3xl border-2 border-dashed border-line-strong p-7"
           >
-            <div>
-              <p class="font-mono text-xs tracking-[0.14em] text-muted uppercase">
-                Reading this section
-              </p>
-              <p class="mt-3 text-sm leading-relaxed text-ink-soft">
-                Technologies marked with
-                <span
-                  class="mx-0.5 inline-block size-1.5 -translate-y-px rounded-full bg-accent align-middle"
-                ></span>
-                are used in the projects below — hover over a label to see which ones.
-              </p>
-            </div>
-            <p class="mt-6 font-mono text-xs text-muted">
-              No proficiency percentages — the projects show how each tool is applied.
+            <p class="font-display text-lg font-medium text-ink">Reading this section</p>
+            <p class="mt-3 leading-relaxed text-muted">
+              Technologies marked with
+              <span
+                class="mx-0.5 inline-block size-2 -translate-y-px rounded-full bg-accent align-middle"
+              ></span>
+              are used in the projects below — hover over a label to see which ones. No proficiency
+              percentages: the projects show how each tool is applied.
             </p>
           </aside>
         </div>

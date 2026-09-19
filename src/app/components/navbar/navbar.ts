@@ -26,6 +26,8 @@ import { isPlaceholder } from '../../shared/placeholder';
 })
 export class Navbar {
   protected readonly sections = PAGE_SECTIONS;
+  /** Desktop text links; Contact is rendered separately as a button. */
+  protected readonly linkSections = PAGE_SECTIONS.filter((section) => section.id !== 'contact');
   protected readonly profile = profile;
   protected readonly hasGithub = !isPlaceholder(profile.githubUrl);
   protected readonly active = inject(ActiveSectionService).active;
