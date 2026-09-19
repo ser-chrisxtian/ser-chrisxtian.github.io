@@ -1,0 +1,137 @@
+<header
+  class="sticky top-0 z-50 border-b transition-[background-color,border-color] duration-300"
+  [class]="
+    scrolled() || menuOpen()
+      ? 'border-line bg-canvas/85 backdrop-blur-md supports-[backdrop-filter]:bg-canvas/75'
+      : 'border-transparent bg-canvas/0'
+  "
+>
+  <nav class="container-page flex h-16 items-center justify-between gap-4" aria-label="Primary">
+    <!-- Brand -->
+    <a
+      routerLink="/"
+      fragment="home"
+      class="group flex items-center gap-3 rounded-lg"
+      aria-label="{{ profile.name }} — home"
+    >
+      <span
+        class="grid size-9 place-items-center rounded-lg border border-line-strong bg-surface font-mono text-[13px] font-semibold text-ink transition-colors group-hover:border-accent group-hover:text-accent"
+        aria-hidden="true"
+      >
+        {{ profile.initials }}
+      </span>
+      <span class="text-[15px] font-semibold tracking-tight text-ink">{{ profile.name }}</span>
+    </a>
+
+    <!-- Desktop navigation -->
+    <ul class="hidden items-center gap-0.5 lg:flex">
+      @for (section of sections; track section.id) {
+        <li>
+          <a
+            routerLink="/"
+            [fragment]="section.id"
+            class="relative block rounded-md px-3 py-2 text-sm transition-colors duration-200"
+            [class]="active() === section.id ? 'text-ink' : 'text-muted hover:text-ink'"
+            [attr.aria-current]="active() === section.id ? 'location' : null"
+          >
+            {{ section.label }}
+            <span
+              class="absolute inset-x-3 -bottom-px h-px origin-center bg-accent transition-transform duration-300"
+              [class]="active() === section.id ? 'scale-x-100' : 'scale-x-0'"
+              aria-hidden="true"
+            ></span>
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- Actions -->
+    <div class="flex items-center gap-1">
+      <app-theme-toggle />
+      @if (hasGithub) {
+        <a
+          [href]="profile.githubUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden size-10 place-items-center rounded-lg text-ink-soft transition-colors hover:bg-surface-2 hover:text-ink sm:grid"
+          aria-label="GitHub profile (opens in a new tab)"
+          title="GitHub"
+        >
+          <svg appIcon="github" class="size-[18px]"></svg>
+        </a>
+      }
+      <button
+        type="button"
+        class="grid size-10 place-items-center rounded-lg text-ink transition-colors hover:bg-surface-2 lg:hidden"
+        [attr.aria-expanded]="menuOpen()"
+        aria-controls="mobile-menu"
+        [attr.aria-label]="menuOpen() ? 'Close menu' : 'Open menu'"
+        (click)="toggleMenu()"
+      >
+        <svg [appIcon]="menuOpen() ? 'x' : 'menu'" class="size-5"></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile navigation -->
+  @if (menuOpen()) {
+    <div
+      id="mobile-menu"
+      class="absolute inset-x-0 top-full border-b border-line bg-canvas shadow-card lg:hidden"
+      animate.enter="menu-in"
+      animate.leave="menu-out"
+    >
+      <ul class="container-page grid gap-1 py-4">
+        @for (section of sections; track section.id; let i = $index) {
+          <li>
+            <a
+              routerLink="/"
+              [fragment]="section.id"
+              class="flex min-h-12 items-center gap-4 rounded-lg px-3 text-base transition-colors"
+              [class]="
+                active() === section.id
+                  ? 'bg-surface-2 text-ink'
+                  : 'text-ink-soft hover:bg-surface-2'
+              "
+              [attr.aria-current]="active() === section.id ? 'location' : null"
+              (click)="closeMenu()"
+            >
+              <span class="w-6 font-mono text-xs text-muted">0{{ i }}</span>
+              {{ section.label }}
+              @if (active() === section.id) {
+                <span class="ml-auto size-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+              }
+            </a>
+          </li>
+        }
+      </ul>
+      <div class="container-page flex flex-wrap gap-2 border-t border-line py-4">
+        <app-resume-button />
+        @if (hasGithub) {
+          <a
+            [href]="profile.githubUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            <svg appIcon="github" class="size-4"></svg>
+            GitHub
+          </a>
+        }
+      </div>
+    </div>
+  }
+</header>
+
+<!-- Tap-outside backdrop. Kept outside <header>: its backdrop-filter would confine fixed children. -->
+@if (menuOpen()) {
+  <button
+    type="button"
+    class="fixed inset-0 top-16 z-40 cursor-default bg-canvas/70 backdrop-blur-sm lg:hidden"
+    aria-label="Close menu"
+    tabindex="-1"
+    (click)="closeMenu()"
+    animate.enter="fade-in"
+    animate.leave="fade-out"
+  ></button>
+}

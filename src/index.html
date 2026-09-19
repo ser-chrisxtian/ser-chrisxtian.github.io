@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Christian B. Peña | IT Educator &amp; Software Developer</title>
+    <!-- User site (ser-chrisxtian.github.io) is served from the domain root. -->
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio of Christian B. Peña — IT educator, software developer, and web developer who builds web applications and information systems and teaches information technology."
+    />
+    <meta name="author" content="Christian B. Peña" />
+    <meta name="theme-color" content="#0a0c10" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="canonical" href="https://ser-chrisxtian.github.io/" />
+
+    <!-- Open Graph / social previews -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Christian B. Peña" />
+    <meta property="og:title" content="Christian B. Peña | IT Educator &amp; Software Developer" />
+    <meta
+      property="og:description"
+      content="Web applications, information systems, and IT education — the portfolio of Christian B. Peña."
+    />
+    <meta property="og:url" content="https://ser-chrisxtian.github.io/" />
+    <meta property="og:image" content="https://ser-chrisxtian.github.io/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Christian B. Peña — IT Educator, Software Developer, Web Developer"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <!-- Applies the saved or OS theme before first paint to avoid a flash (see ThemeService). -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var light = saved
+            ? saved === 'light'
+            : matchMedia('(prefers-color-scheme: light)').matches;
+          if (light) {
+            document.documentElement.classList.remove('dark');
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f7f5');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600&display=swap"
+    />
+  </head>
+  <body>
+    <app-root></app-root>
+    <noscript>
+      <p style="padding: 2rem; font-family: system-ui, sans-serif">
+        Christian B. Peña — IT Educator, Software Developer, Web Developer. Please enable JavaScript
+        to view this portfolio.
+      </p>
+    </noscript>
+  </body>
+</html>

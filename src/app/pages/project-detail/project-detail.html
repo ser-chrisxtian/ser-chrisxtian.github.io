@@ -1,0 +1,290 @@
+@if (project(); as p) {
+  <article class="page-enter" aria-labelledby="project-title">
+    <!-- Header -->
+    <header class="relative isolate overflow-hidden border-b border-line">
+      <div class="bg-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
+      <div class="container-page pt-10 pb-14 sm:pt-14 sm:pb-20">
+        <a
+          routerLink="/"
+          fragment="projects"
+          class="group inline-flex min-h-10 items-center gap-2 rounded-lg text-sm text-muted transition-colors hover:text-ink"
+        >
+          <svg
+            appIcon="arrow-left"
+            class="size-4 transition-transform group-hover:-translate-x-0.5"
+          ></svg>
+          All projects
+        </a>
+
+        <div class="mt-8 flex flex-wrap items-center gap-2">
+          <span class="chip border-accent/30 bg-accent-soft text-accent">{{ p.category }}</span>
+          @if (p.status) {
+            <span class="chip">{{ p.status }}</span>
+          }
+        </div>
+
+        <h1
+          id="project-title"
+          class="mt-5 text-4xl font-semibold tracking-tight text-ink sm:text-5xl"
+        >
+          {{ p.title }}
+        </h1>
+        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">{{ p.description }}</p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          @if (p.githubUrl) {
+            <a
+              [href]="p.githubUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >
+              <svg appIcon="github" class="size-4"></svg>
+              View repository
+              <span class="sr-only">(opens in a new tab)</span>
+            </a>
+          } @else {
+            <span class="btn cursor-default border border-dashed border-line-strong text-muted">
+              <svg appIcon="lock" class="size-4"></svg>
+              Private Project
+            </span>
+          }
+          @if (p.demoUrl) {
+            <a
+              [href]="p.demoUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-secondary"
+            >
+              <svg appIcon="external-link" class="size-4"></svg>
+              Live Demo
+              <span class="sr-only">(opens in a new tab)</span>
+            </a>
+          }
+        </div>
+      </div>
+    </header>
+
+    <!-- Cover -->
+    <div class="container-page -mt-px pt-10 sm:pt-14">
+      <figure class="card overflow-hidden">
+        <img
+          [src]="p.image.src"
+          [alt]="p.image.alt"
+          width="1600"
+          height="1000"
+          fetchpriority="high"
+          class="aspect-[16/10] w-full object-cover"
+        />
+      </figure>
+    </div>
+
+    <!-- Body -->
+    <div class="container-page grid gap-12 py-14 sm:py-20 lg:grid-cols-12 lg:gap-16">
+      <div class="space-y-14 lg:col-span-8">
+        @if (p.longDescription) {
+          <section appReveal aria-labelledby="overview-title">
+            <h2 id="overview-title" class="eyebrow">Overview</h2>
+            <p class="mt-4 text-base leading-relaxed text-ink-soft sm:text-[17px]">
+              {{ p.longDescription }}
+            </p>
+          </section>
+        }
+
+        @if (p.problem || p.solution) {
+          <div class="grid gap-4 sm:grid-cols-2">
+            @if (p.problem) {
+              <section appReveal class="card p-6" aria-labelledby="problem-title">
+                <h2
+                  id="problem-title"
+                  class="flex items-center gap-2 text-sm font-semibold text-ink"
+                >
+                  <svg appIcon="target" class="size-4 text-muted"></svg>
+                  Problem
+                </h2>
+                <p class="mt-3 text-sm leading-relaxed text-muted">{{ p.problem }}</p>
+              </section>
+            }
+            @if (p.solution) {
+              <section
+                appReveal
+                [revealDelay]="80"
+                class="card p-6"
+                aria-labelledby="solution-title"
+              >
+                <h2
+                  id="solution-title"
+                  class="flex items-center gap-2 text-sm font-semibold text-ink"
+                >
+                  <svg appIcon="lightbulb" class="size-4 text-accent"></svg>
+                  Solution
+                </h2>
+                <p class="mt-3 text-sm leading-relaxed text-muted">{{ p.solution }}</p>
+              </section>
+            }
+          </div>
+        }
+
+        @if (p.features?.length) {
+          <section appReveal aria-labelledby="features-title">
+            <h2 id="features-title" class="eyebrow">{{ p.featuresLabel ?? 'Key features' }}</h2>
+            <ul class="mt-5 grid gap-x-8 sm:grid-cols-2">
+              @for (feature of p.features; track feature) {
+                <li class="flex items-center gap-3 border-b border-line py-3 text-sm text-ink">
+                  <span
+                    class="grid size-5 shrink-0 place-items-center rounded-md bg-accent-soft text-accent"
+                  >
+                    <svg appIcon="check" class="size-3.5"></svg>
+                  </span>
+                  {{ feature }}
+                </li>
+              }
+            </ul>
+          </section>
+        }
+
+        @if (p.screenshots?.length) {
+          <section appReveal aria-labelledby="screens-title">
+            <h2 id="screens-title" class="eyebrow">Screenshots</h2>
+            <div class="mt-5 grid gap-6">
+              @for (shot of p.screenshots; track shot.src + $index) {
+                <figure>
+                  <div class="card overflow-hidden">
+                    <img
+                      [src]="shot.src"
+                      [alt]="shot.alt"
+                      width="1600"
+                      height="1000"
+                      loading="lazy"
+                      decoding="async"
+                      class="aspect-[16/10] w-full object-cover"
+                    />
+                  </div>
+                  @if (shot.caption) {
+                    <figcaption class="mt-3 text-sm text-muted">
+                      <span [class.placeholder-text]="isPlaceholder(shot.caption)">{{
+                        shot.caption
+                      }}</span>
+                    </figcaption>
+                  }
+                </figure>
+              }
+            </div>
+          </section>
+        }
+      </div>
+
+      <!-- Project facts -->
+      <aside class="lg:col-span-4" aria-labelledby="facts-title">
+        <div class="card space-y-6 p-6 lg:sticky lg:top-24">
+          <h2 id="facts-title" class="font-mono text-xs tracking-[0.14em] text-muted uppercase">
+            Project details
+          </h2>
+
+          <dl class="space-y-5 text-sm">
+            <div>
+              <dt class="text-muted">Category</dt>
+              <dd class="mt-1 text-ink">{{ p.category }}</dd>
+            </div>
+            @if (p.role) {
+              <div>
+                <dt class="text-muted">My role</dt>
+                <dd class="mt-1 text-ink">
+                  <span [class.placeholder-text]="isPlaceholder(p.role)">{{ p.role }}</span>
+                </dd>
+              </div>
+            }
+            <div>
+              <dt class="text-muted">Technology stack</dt>
+              <dd class="mt-2">
+                <ul class="flex flex-wrap gap-1.5">
+                  @for (tech of p.technologies; track tech) {
+                    <li class="chip">{{ tech }}</li>
+                  }
+                </ul>
+              </dd>
+            </div>
+            <div>
+              <dt class="text-muted">Repository</dt>
+              <dd class="mt-1">
+                @if (p.githubUrl) {
+                  <a
+                    [href]="p.githubUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 text-accent underline-offset-4 hover:underline"
+                  >
+                    GitHub
+                    <svg appIcon="arrow-up-right" class="size-3.5"></svg>
+                    <span class="sr-only">(opens in a new tab)</span>
+                  </a>
+                } @else {
+                  <span class="inline-flex items-center gap-1.5 text-ink">
+                    <svg appIcon="lock" class="size-3.5 text-muted"></svg>
+                    Private Project
+                  </span>
+                }
+              </dd>
+            </div>
+            @if (p.demoUrl) {
+              <div>
+                <dt class="text-muted">Live demo</dt>
+                <dd class="mt-1">
+                  <a
+                    [href]="p.demoUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 text-accent underline-offset-4 hover:underline"
+                  >
+                    Open demo
+                    <svg appIcon="arrow-up-right" class="size-3.5"></svg>
+                    <span class="sr-only">(opens in a new tab)</span>
+                  </a>
+                </dd>
+              </div>
+            }
+          </dl>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Previous / next -->
+    @if (neighbours(); as n) {
+      <nav class="border-t border-line" aria-label="More projects">
+        <div class="container-page grid gap-4 py-10 sm:grid-cols-2">
+          <a
+            [routerLink]="['/projects', n.previous.id]"
+            class="group card flex flex-col gap-1 p-5 transition-colors hover:border-line-strong"
+          >
+            <span class="inline-flex items-center gap-1.5 font-mono text-xs text-muted">
+              <svg
+                appIcon="arrow-left"
+                class="size-3.5 transition-transform group-hover:-translate-x-0.5"
+              ></svg>
+              Previous
+            </span>
+            <span class="font-medium text-ink">{{ n.previous.title }}</span>
+          </a>
+          <a
+            [routerLink]="['/projects', n.next.id]"
+            class="group card flex flex-col items-end gap-1 p-5 text-right transition-colors hover:border-line-strong"
+          >
+            <span class="inline-flex items-center gap-1.5 font-mono text-xs text-muted">
+              Next
+              <svg
+                appIcon="arrow-right"
+                class="size-3.5 transition-transform group-hover:translate-x-0.5"
+              ></svg>
+            </span>
+            <span class="font-medium text-ink">{{ n.next.title }}</span>
+          </a>
+        </div>
+      </nav>
+    }
+  </article>
+} @else {
+  <app-not-found
+    heading="Project not found"
+    message="This project does not exist or may have been renamed. Browse the full list of projects instead."
+  />
+}
