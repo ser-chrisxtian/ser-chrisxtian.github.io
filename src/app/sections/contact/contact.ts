@@ -102,6 +102,9 @@ interface ContactLink extends SocialLink {
 export class Contact {
   protected readonly isPlaceholder = isPlaceholder;
   protected readonly emailLink = isPlaceholder(profile.email) ? null : `mailto:${profile.email}`;
+  protected readonly phoneLink = isPlaceholder(profile.phone)
+    ? null
+    : `tel:${profile.phone.replace(/[^\d+]/g, '')}`;
 
   protected readonly links: ContactLink[] = [
     {
@@ -119,11 +122,11 @@ export class Contact {
       external: true,
     },
     {
-      label: 'LinkedIn',
-      icon: 'linkedin',
-      url: profile.linkedinUrl,
-      display: profile.linkedinUrl.replace(/^https?:\/\//, ''),
-      external: true,
+      label: 'Phone',
+      icon: 'smartphone',
+      url: this.phoneLink ?? profile.phone,
+      display: `${profile.phone} (${profile.phoneNetwork})`,
+      external: false,
     },
     ...profile.otherLinks.map((link) => ({
       ...link,

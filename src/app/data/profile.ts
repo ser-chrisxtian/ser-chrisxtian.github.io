@@ -11,7 +11,7 @@ import type { IconName } from '../components/icon/icons';
 export interface SocialLink {
   label: string;
   url: string;
-  icon: 'github' | 'linkedin' | 'mail' | 'link';
+  icon: 'github' | 'mail' | 'smartphone' | 'link';
 }
 
 export interface Pillar {
@@ -33,7 +33,10 @@ export interface Profile {
   pillars: Pillar[];
   email: string;
   githubUrl: string;
-  linkedinUrl: string;
+  /** Mobile number in international format, e.g. `+63 900 000 0000`. Becomes a `tel:` link. */
+  phone: string;
+  /** Mobile network shown next to the number (e.g. Smart, Globe). */
+  phoneNetwork: string;
   /** Additional professional links (portfolio, publications, ORCID, etc.). */
   otherLinks: SocialLink[];
   /**
@@ -95,8 +98,10 @@ export const profile: Profile = {
   ],
   email: 'ser.chrisxtian@gmail.com',
   githubUrl: 'https://github.com/ser-chrisxtian',
-  linkedinUrl: '[Add LinkedIn URL]',
+  phone: '+63 969 470 8031',
+  phoneNetwork: 'Smart',
   otherLinks: [{ label: '[Add Other Professional Link]', url: '[Add URL]', icon: 'link' }],
+  photo: { src: 'images/profile.jpg', alt: 'Portrait of Christian B. Peña' },
   resumePath: 'resume.pdf',
   siteUrl: 'https://ser-chrisxtian.github.io/',
   focusAreas: ['web applications', 'information systems', 'databases & APIs'],

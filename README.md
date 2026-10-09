@@ -69,7 +69,7 @@ Any value written in brackets, such as `[Add Email]`, is a **placeholder**. The 
 
 | File            | What it controls                                                                                               |
 | --------------- | -------------------------------------------------------------------------------------------------------------- |
-| `profile.ts`    | Name, roles, summary, bio, areas of work, "What I do" cards, email, GitHub, LinkedIn, other links, resume path |
+| `profile.ts`    | Name, roles, summary, bio, areas of work, "What I do" cards, email, phone, GitHub, other links, resume path     |
 | `projects.ts`   | Projects: cards, category filter, and detail pages                                                             |
 | `skills.ts`     | Technology stack categories                                                                                    |
 | `experience.ts` | Experience timeline                                                                                            |
@@ -77,7 +77,7 @@ Any value written in brackets, such as `[Add Email]`, is a **placeholder**. The 
 
 Notes:
 
-- **Social links:** set `email`, `githubUrl`, `linkedinUrl`, and `otherLinks` in `profile.ts`. A real email address automatically becomes a `mailto:` link.
+- **Social links:** set `email`, `phone`, `phoneNetwork`, `githubUrl`, and `otherLinks` in `profile.ts`. A real email address becomes a `mailto:` link and a real phone number becomes a `tel:` link.
 - **Skills:** technologies whose names also appear in a project's `technologies` list are marked in the Skills section and linked to those projects. Keep the spelling consistent.
 - **Experience / Education:** append objects to the arrays to add more entries.
 

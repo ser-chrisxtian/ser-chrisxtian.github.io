@@ -33,15 +33,13 @@ import { isPlaceholder } from '../../shared/placeholder';
               <svg appIcon="github" class="size-[18px]"></svg>
             </a>
           }
-          @if (links.linkedin) {
+          @if (links.phone) {
             <a
-              [href]="profile.linkedinUrl"
-              target="_blank"
-              rel="noopener noreferrer"
+              [href]="links.phone"
               class="grid size-10 place-items-center rounded-xl transition-colors hover:bg-tile hover:text-ink"
-              aria-label="LinkedIn (opens in a new tab)"
+              [attr.aria-label]="'Call ' + profile.phone"
             >
-              <svg appIcon="linkedin" class="size-[18px]"></svg>
+              <svg appIcon="smartphone" class="size-[18px]"></svg>
             </a>
           }
           @if (links.email) {
@@ -71,7 +69,7 @@ export class Footer {
   protected readonly year = new Date().getFullYear();
   protected readonly links = {
     github: !isPlaceholder(profile.githubUrl),
-    linkedin: !isPlaceholder(profile.linkedinUrl),
+    phone: isPlaceholder(profile.phone) ? null : `tel:${profile.phone.replace(/[^\d+]/g, '')}`,
     email: !isPlaceholder(profile.email),
   };
 }
