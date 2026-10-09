@@ -101,7 +101,7 @@ export const profile: Profile = {
   phone: '+63 969 470 8031',
   phoneNetwork: 'Smart',
   otherLinks: [{ label: '[Add Other Professional Link]', url: '[Add URL]', icon: 'link' }],
-  photo: { src: 'images/profile.jpg', alt: 'Portrait of Christian B. Peña' },
+  photo: { src: 'images/profile.jpg', alt: 'Pencil sketch portrait of Christian B. Peña wearing headphones' },
   resumePath: 'resume.pdf',
   siteUrl: 'https://ser-chrisxtian.github.io/',
   focusAreas: ['web applications', 'information systems', 'databases & APIs'],
